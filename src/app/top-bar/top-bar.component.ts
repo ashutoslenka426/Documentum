@@ -1,15 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,EventEmitter, Input, Output  } from '@angular/core';
+import { NewDocumentService } from '../new-document.service';
 
 @Component({
   selector: 'app-top-bar',
   templateUrl: './top-bar.component.html',
-  styleUrls: ['./top-bar.component.css']
+  styleUrls: ['./top-bar.component.css'],
+  providers: [NewDocumentService]
 })
 export class TopBarComponent implements OnInit {
-
-  constructor() { }
+  
+  constructor(private NewDocumentService: NewDocumentService) { }
 
   ngOnInit() {
+  }
+
+  openNewDocumentDialog() {
+    console.log('test1');
+    this.NewDocumentService.documentDialogOpen();
   }
 
 }
