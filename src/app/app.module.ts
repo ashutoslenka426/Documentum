@@ -16,6 +16,7 @@ import { FormsModule } from '@angular/forms';
 
 import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { NewDocumentService } from './new-document.service';
 
 
 @NgModule({
@@ -37,7 +38,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
   ],
   entryComponents: [TopBarComponent, NewDocumentComponent],
   bootstrap: [AppComponent,TopBarComponent],
-  providers: []
+  providers: [NewDocumentService]
   
 })
 export class AppModule { }

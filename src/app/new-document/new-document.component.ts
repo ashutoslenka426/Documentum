@@ -11,7 +11,7 @@ export interface DialogData {
   selector: 'app-new-document',
   templateUrl: './new-document.component.html',
   styleUrls: ['./new-document.component.css'],
-  providers: [NewDocumentService]
+  
 })
 export class NewDocumentComponent implements OnInit {
   
@@ -23,18 +23,21 @@ export class NewDocumentComponent implements OnInit {
   constructor(private NewDocumentService: NewDocumentService ,public dialog: MatDialog) {
     console.log('test3');
     this.NewDocumentService.dialogOpenCalled$.subscribe(
-      () => {
+      () => this.documentDialogOpen());
+  }  
+      documentDialogOpen(){
         console.log('dialog called');
         const dialogRef = this.dialog.open(TopBarComponent, {
           width: '250px',
           data: {name: this.name}
         });
-      }
-    );
+      }  
+     
+
   }
 
   
  
  
 
-}
+

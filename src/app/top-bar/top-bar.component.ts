@@ -5,7 +5,7 @@ import { NewDocumentService } from '../new-document.service';
   selector: 'app-top-bar',
   templateUrl: './top-bar.component.html',
   styleUrls: ['./top-bar.component.css'],
-  providers: [NewDocumentService]
+  
 })
 export class TopBarComponent implements OnInit {
   
