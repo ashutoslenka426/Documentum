@@ -1,5 +1,6 @@
 import { Component, OnInit ,EventEmitter, Input, Output  } from '@angular/core';
-import { NewDocumentService } from '../new-document.service';
+import { NewDocumentComponent } from '../new-document/new-document.component';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog'
 
 @Component({
   selector: 'app-top-bar',
@@ -9,14 +10,20 @@ import { NewDocumentService } from '../new-document.service';
 })
 export class TopBarComponent implements OnInit {
   
-  constructor(private NewDocumentService: NewDocumentService) { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit() {
   }
 
+  name: string;
+
   openNewDocumentDialog() {
-    console.log('test1');
-    this.NewDocumentService.documentDialogOpen();
+        
+    const dialogRef = this.dialog.open(NewDocumentComponent, {
+      width: '250px',
+      data: {name: this.name}
+    });
+    
   }
 
 }
