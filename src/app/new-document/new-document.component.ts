@@ -1,4 +1,5 @@
-import {  Component, OnInit } from '@angular/core';
+import {  Component, OnInit, Inject} from '@angular/core';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 export interface DialogData {
    name: string;
@@ -14,12 +15,18 @@ export class NewDocumentComponent implements OnInit {
   
   ngOnInit() {
   }
-  constructor() {
-  }  
+  constructor(public dialogRef: MatDialogRef<NewDocumentComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) {
+    
+     
   }
+
+  onCancelClick(): void {
+    this.dialogRef.close();
+  } 
 
   
  
- 
+}
 
 
