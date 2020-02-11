@@ -1,13 +1,13 @@
-<div>
+<div class="box">
     <div mat-dialog-content>
-      <p>Document Name</p>
+      <p class="textHeader">Document Name</p>
       
-        <input matInput [(ngModel)]="data.name">
+        <input class="documentText" matInput [(ngModel)]="data.name">
       
     </div>
     <div mat-dialog-actions>
-      <button mat-button (click)="onCancelClick()">Cancel</button>
-      <button mat-button (click)="onSaveClick(data.name)" [mat-dialog-close]="data.name" cdkFocusInitial>Save</button>
+      <button class="matButton" mat-button (click)="onCancelClick()">Cancel</button>
+      <button class="matButton" mat-button (click)="onSaveClick(data.name)" [mat-dialog-close]="data.name" cdkFocusInitial>Save</button>
     </div>
 </div>    
   
