@@ -1,5 +1,6 @@
 import {  Component, OnInit, Inject} from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { FirebaseService } from '../firebase.service';
 
 export interface DialogData {
    name: string;
@@ -12,11 +13,11 @@ export interface DialogData {
   
 })
 export class NewDocumentComponent implements OnInit {
-  
+    
   ngOnInit() {
   }
   constructor(public dialogRef: MatDialogRef<NewDocumentComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {
+    @Inject(MAT_DIALOG_DATA) public data: DialogData , public firebaseService: FirebaseService ) {
     
      
   }
@@ -24,6 +25,15 @@ export class NewDocumentComponent implements OnInit {
   onCancelClick(): void {
     this.dialogRef.close();
   } 
+
+  onSaveClick(document_name): void {
+        
+    if(document_name != null){
+      
+      this.firebaseService.createDocument(document_name);
+    }
+
+  }
 
   
  
