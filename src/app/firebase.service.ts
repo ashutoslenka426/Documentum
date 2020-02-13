@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestoreCollection, AngularFirestore, AngularFirestoreDocument } from "angularfire2/firestore";
+import { DocumentlistComponent } from './documentlist/documentlist.component';
 
 
 @Injectable({
@@ -16,6 +17,10 @@ export class FirebaseService {
       is_important: 0
       
     });
-    
+   
   }
+  getDocumentList(){
+    return this.db.collection('documents').snapshotChanges();
+  }
+
 }

@@ -20,19 +20,24 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {FirebaseService } from './firebase.service';
 import {MatSelectModule} from '@angular/material/select';
+import {MatTableModule} from '@angular/material/table';
+
+import { DocumentlistComponent } from './documentlist/documentlist.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     TopBarComponent,
-    NewDocumentComponent
+    NewDocumentComponent,
+    DocumentlistComponent
   ],
   imports: [
     MatInputModule,
     MatFormFieldModule,
     MatButtonModule,
     MatSelectModule,
+    MatTableModule,
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),

@@ -1,0 +1,12 @@
+table {
+    width: 20%;
+}
+tr.mat-header-row {
+    height: 30px;
+}
+tr.mat-footer-row, tr.mat-row {
+    height: 30px;
+}
+td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type, th.mat-header-cell:first-of-type {
+    padding-left: 48px;
+}
