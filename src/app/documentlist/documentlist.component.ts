@@ -1,38 +1,42 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FirebaseService } from '../firebase.service';
+import { DocumentlistDatasourceService } from '../documentlist-datasource.service';
 
-var DOCUMENTS_DATA = new Array<any>();
+var DOCUMENTS_DATA = [];
 
 @Component({
   selector: 'app-documentlist',
+  template: `
+      `,
   templateUrl: './documentlist.component.html',
   styleUrls: ['./documentlist.component.css']
 })
 export class DocumentlistComponent implements OnInit {
-
-  displayedColumns: string[] = ['document_name'];
-  dataSource = DOCUMENTS_DATA;
-
-  constructor(public firebaseService: FirebaseService) { 
+  
+  constructor(public firebaseService: FirebaseService , public data: DocumentlistDatasourceService) {
 
     this.firebaseService.getDocumentList()
-    .subscribe(result => {
-      result.forEach((doc) => {
-        DOCUMENTS_DATA.push(doc.payload.doc.data());
+
+      .subscribe(result => {
+        
+        result.forEach((doc) => {
+          DOCUMENTS_DATA.push(doc.payload.doc.data());
+
+        })
+
         this.dataSource = DOCUMENTS_DATA;
-        console.log('pushed');
-      });
-    });
-    DOCUMENTS_DATA = [
-      {document_name: "cow", is_important: 0}
-    ];
-    console.log(DOCUMENTS_DATA);
-    this.dataSource = DOCUMENTS_DATA;
-    console.log(DOCUMENTS_DATA);
+        
+      })
+
   }
 
-  ngOnInit() {
-    
-  }
+  displayedColumns: string[] = ['is_selected','document_name'];
   
+  dataSource = [];
+
+  ngOnInit() {
+    console.log('parent component called');
+    this.data.currentdataSource.subscribe(DOCUMENTS_DATA => this.dataSource = DOCUMENTS_DATA);
+  }
+
 }

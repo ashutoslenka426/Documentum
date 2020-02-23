@@ -17,6 +17,7 @@ import { FormsModule } from '@angular/forms';
 
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {FirebaseService } from './firebase.service';
 import {MatSelectModule} from '@angular/material/select';
@@ -33,6 +34,7 @@ import { DocumentlistComponent } from './documentlist/documentlist.component';
     DocumentlistComponent
   ],
   imports: [
+    MatCheckboxModule,
     MatInputModule,
     MatFormFieldModule,
     MatButtonModule,
