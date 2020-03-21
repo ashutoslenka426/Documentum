@@ -21,4 +21,8 @@ td.mat-cell {
     border-bottom: 1px solid #ffa600;
     border-top: 1px solid #ffa600;
 }
+td.mat-cell:last-of-type, td.mat-footer-cell:last-of-type, th.mat-header-cell:last-of-type {
+    padding-bottom: 4px;
+}
+
 

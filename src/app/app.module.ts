@@ -24,6 +24,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatTableModule} from '@angular/material/table';
 
 import { DocumentlistComponent } from './documentlist/documentlist.component';
+import { DeleteDocumentComponent } from './delete-document/delete-document.component';
 
 
 @NgModule({
@@ -31,7 +32,9 @@ import { DocumentlistComponent } from './documentlist/documentlist.component';
     AppComponent,
     TopBarComponent,
     NewDocumentComponent,
-    DocumentlistComponent
+    DocumentlistComponent,
+    DeleteDocumentComponent
+ 
   ],
   imports: [
     MatCheckboxModule,
@@ -48,7 +51,7 @@ import { DocumentlistComponent } from './documentlist/documentlist.component';
     MatDialogModule,
     FormsModule
   ],
-  entryComponents: [TopBarComponent, NewDocumentComponent],
+  entryComponents: [TopBarComponent,NewDocumentComponent,DeleteDocumentComponent],
   bootstrap: [AppComponent,TopBarComponent],
   providers: [FirebaseService]
   

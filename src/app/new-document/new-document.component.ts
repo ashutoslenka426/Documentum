@@ -22,7 +22,7 @@ export class NewDocumentComponent implements OnInit {
 
   ngOnInit() {
 
-    this.data1.currentdataSource.subscribe(DOCUMENTS_DATA => this.dataSource = DOCUMENTS_DATA)
+    
     
   }
   constructor(public dialogRef: MatDialogRef<NewDocumentComponent>,
@@ -36,24 +36,15 @@ export class NewDocumentComponent implements OnInit {
   } 
 
   onSaveClick(document_name): void {
+
+    console.log('save called');
         
     if(document_name != null){
       
      this.firebaseService.createDocument(document_name);
-
-      this.firebaseService.getDocumentList()
-
-      .subscribe(result => {
-
-        result.forEach((doc) => {
-          DOCUMENTS_DATA.push(doc.payload.doc.data());
-
-        })
-
-        
-      })
-
-      this.data1.changeDatasource(DOCUMENTS_DATA);
+      
+      console.log('Docunents' + DOCUMENTS_DATA);
+      this.data1.changeDatasource(document_name);
             
     }
   }

@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FirebaseService } from '../firebase.service';
 import { DocumentlistDatasourceService } from '../documentlist-datasource.service';
 
-var DOCUMENTS_DATA = [];
+
 
 @Component({
   selector: 'app-documentlist',
@@ -14,29 +14,37 @@ var DOCUMENTS_DATA = [];
 export class DocumentlistComponent implements OnInit {
   
   constructor(public firebaseService: FirebaseService , public data: DocumentlistDatasourceService) {
-
-    this.firebaseService.getDocumentList()
-
-      .subscribe(result => {
-        
-        result.forEach((doc) => {
-          DOCUMENTS_DATA.push(doc.payload.doc.data());
-
-        })
-
-        this.dataSource = DOCUMENTS_DATA;
-        
-      })
+    
 
   }
 
-  displayedColumns: string[] = ['is_selected','document_name'];
+  displayedColumns: string[] = ['is_selected','is_important','document_name'];
   
   dataSource = [];
 
   ngOnInit() {
+
+    var DOCUMENTS_DATA = [];
+    console.log('called again')
+    this.firebaseService.getDocumentList()
+    
+    .subscribe(result => {
+      
+      result.forEach((doc) => {
+        DOCUMENTS_DATA.push(doc.payload.doc.data());
+
+      })
+
+      this.dataSource = DOCUMENTS_DATA;
+      DOCUMENTS_DATA = [];
+      
+    })
+
+         
     console.log('parent component called');
-    this.data.currentdataSource.subscribe(DOCUMENTS_DATA => this.dataSource = DOCUMENTS_DATA);
+    
+    this.data.currentdataSource.subscribe(DOCUMENTS_DATA => this.dataSource = null);
+        
   }
 
 }

@@ -9,13 +9,12 @@ export class DocumentlistDatasourceService {
 
   constructor() { }
 
-  private dataSource = new BehaviorSubject([] as any);
-  currentdataSource = this.dataSource.asObservable();
+  private dataSource1 = new BehaviorSubject([] as any);
+  currentdataSource = this.dataSource1.asObservable();
 
   changeDatasource(data : any[]){
     console.log('service called');
-    console.log(data);
-    this.dataSource.next(data);
+    this.dataSource1.next(data);
   }
   
 }

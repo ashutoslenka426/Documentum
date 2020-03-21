@@ -1,0 +1,12 @@
+<div class="box">
+    <div mat-dialog-content>
+      <p class="textHeader">Delete Document</p>
+      
+        <div class="textSpacing">Are you sure want to delete these documents ?</div>
+      
+    </div>
+    <div mat-dialog-actions>
+      <button class="matButton" mat-button (click)="onCancelClick()">Cancel</button>
+      <button class="matButton" mat-button (click)="onDeleteClick()" cdkFocusInitial>Delete</button>
+    </div>
+</div>
