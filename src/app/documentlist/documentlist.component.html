@@ -13,7 +13,8 @@
   <ng-container  matColumnDef="is_important">
     <th mat-header-cell *matHeaderCellDef></th>
     <td mat-cell *matCellDef="let element">
-      <img src="../assets/icons/green_star_icon.png"/>
+      <img src="{{ !element.is_important ? '../assets/icons/green_star_icon.png' : '../assets/icons/red_star_icon.png'}}" 
+        type="button" (click)="toggleChild()" name="is_important" />
     </td>
   </ng-container>
   

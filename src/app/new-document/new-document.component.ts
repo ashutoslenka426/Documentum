@@ -2,7 +2,6 @@ import {  Component, OnInit, Inject} from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { FirebaseService } from '../firebase.service';
 import { DocumentlistComponent } from '../documentlist/documentlist.component';
-import { DocumentlistDatasourceService } from '../documentlist-datasource.service';
 
 export interface DialogData {
    name: string;
@@ -26,7 +25,7 @@ export class NewDocumentComponent implements OnInit {
     
   }
   constructor(public dialogRef: MatDialogRef<NewDocumentComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData , public firebaseService: FirebaseService , private data1: DocumentlistDatasourceService) {
+    @Inject(MAT_DIALOG_DATA) public data: DialogData , public firebaseService: FirebaseService) {
     
       
   }
@@ -43,9 +42,8 @@ export class NewDocumentComponent implements OnInit {
       
      this.firebaseService.createDocument(document_name);
       
-      console.log('Docunents' + DOCUMENTS_DATA);
-      this.data1.changeDatasource(document_name);
-            
+      console.log('Documents' + DOCUMENTS_DATA);
+                  
     }
   }
  

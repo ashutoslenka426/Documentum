@@ -2,7 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { NewDocumentComponent, DialogData } from '../new-document/new-document.component';
 import { FirebaseService } from '../firebase.service';
-import { DocumentlistDatasourceService } from '../documentlist-datasource.service';
+
 
 var DOCUMENTS_DATA = [];
 
@@ -14,7 +14,7 @@ var DOCUMENTS_DATA = [];
 export class DeleteDocumentComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<DeleteDocumentComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData ,public firebaseService: FirebaseService , private data1: DocumentlistDatasourceService) { }
+    @Inject(MAT_DIALOG_DATA) public data: DialogData ,public firebaseService: FirebaseService) { }
 
   ngOnInit() {
   }
@@ -38,8 +38,7 @@ export class DeleteDocumentComponent implements OnInit {
           
           console.log('element passed ' + elements_document_name[i].innerText);
 
-          this.firebaseService.deleteDocument(elements_document_name[i].innerText , true);
-                              
+          this.firebaseService.deleteDocument(elements_document_name[i].innerText , true);      
           }
           else {
                         
@@ -49,6 +48,7 @@ export class DeleteDocumentComponent implements OnInit {
 
 
     this.dialogRef.close();
+   
   }
 
 }
