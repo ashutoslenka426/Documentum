@@ -14,14 +14,24 @@
     <th mat-header-cell *matHeaderCellDef></th>
     <td mat-cell *matCellDef="let element">
       <img src="{{ !element.is_important ? '../assets/icons/green_star_icon.png' : '../assets/icons/red_star_icon.png'}}" 
-        type="button" (click)="toggleChild()" name="is_important" />
+        type="button" (click)="toggleChild(element.document_name)" name="is_important" />
     </td>
   </ng-container>
+
+
   
   <!-- Name Column -->
   <ng-container matColumnDef="document_name">
     <th mat-header-cell *matHeaderCellDef> Name </th>
     <td mat-cell *matCellDef="let element" name="document_name"> {{element.document_name}} </td>
+  </ng-container>
+
+  <ng-container  matColumnDef="edit">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let element">
+      <img src="{{'../assets/icons/edit_icon.png'}}" 
+        type="button" (click)="editDocumentName(element.document_name)" name="edit" />
+    </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

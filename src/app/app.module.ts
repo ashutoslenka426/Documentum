@@ -25,6 +25,7 @@ import {MatTableModule} from '@angular/material/table';
 
 import { DocumentlistComponent } from './documentlist/documentlist.component';
 import { DeleteDocumentComponent } from './delete-document/delete-document.component';
+import { EditDocumentComponent } from './edit-document/edit-document.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { DeleteDocumentComponent } from './delete-document/delete-document.compo
     TopBarComponent,
     NewDocumentComponent,
     DocumentlistComponent,
-    DeleteDocumentComponent
+    DeleteDocumentComponent,
+    EditDocumentComponent
  
   ],
   imports: [
@@ -51,7 +53,7 @@ import { DeleteDocumentComponent } from './delete-document/delete-document.compo
     MatDialogModule,
     FormsModule
   ],
-  entryComponents: [TopBarComponent,NewDocumentComponent,DeleteDocumentComponent],
+  entryComponents: [TopBarComponent,NewDocumentComponent,DeleteDocumentComponent,EditDocumentComponent],
   bootstrap: [AppComponent,TopBarComponent],
   providers: [FirebaseService]
   

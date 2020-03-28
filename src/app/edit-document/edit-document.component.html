@@ -1,0 +1,12 @@
+<div class="box">
+    <div mat-dialog-content>
+      <p class="textHeader">Document Name</p>
+      
+        <input class="documentText" matInput [(ngModel)]="data.name">
+      
+    </div>
+    <div mat-dialog-actions>
+      <button class="matButton" mat-button (click)="onCancelClick()">Cancel</button>
+      <button class="matButton" mat-button (click)="onSaveClick(data.name , data.old)" [mat-dialog-close]="data.name" cdkFocusInitial>Save</button>
+    </div>
+</div>
