@@ -3,6 +3,7 @@ import { NewDocumentComponent } from '../new-document/new-document.component';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog'
 import { DeleteDocumentComponent } from '../delete-document/delete-document.component';
 import { DocumentlistComponent } from '../documentlist/documentlist.component';
+import { AngularFireStorage , AngularFireUploadTask  } from 'angularfire2/storage';
 
 @Component({
   selector: 'app-top-bar',
@@ -11,8 +12,13 @@ import { DocumentlistComponent } from '../documentlist/documentlist.component';
   
 })
 export class TopBarComponent implements OnInit {
+
+  ref;
+  task;
+  uploadProgress;
+  downloadURL;
  
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog , private afStorage: AngularFireStorage) { }
 
  
   ngOnInit() {
@@ -61,6 +67,21 @@ export class TopBarComponent implements OnInit {
     }  
     
     
+
+
+    
+  }
+
+
+  upload(event) {
+
+    console.log( ' file upload ');
+    
+    const randomId = Math.random().toString(36).substring(2);
+    this.ref = this.afStorage.ref(randomId);
+    this.task = this.ref.put(event.target.files[0]);
+    this.uploadProgress = this.task.percentageChanges();
+    console.log(this.uploadProgress);           
   }
 
 }

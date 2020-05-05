@@ -5,6 +5,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from 'angularfire2/storage';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -28,6 +29,7 @@ import { DeleteDocumentComponent } from './delete-document/delete-document.compo
 import { EditDocumentComponent } from './edit-document/edit-document.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,8 +37,8 @@ import { EditDocumentComponent } from './edit-document/edit-document.component';
     NewDocumentComponent,
     DocumentlistComponent,
     DeleteDocumentComponent,
-    EditDocumentComponent
- 
+    EditDocumentComponent,
+    
   ],
   imports: [
     MatCheckboxModule,
@@ -49,6 +51,7 @@ import { EditDocumentComponent } from './edit-document/edit-document.component';
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
+    AngularFireStorageModule,
     BrowserAnimationsModule,
     MatDialogModule,
     FormsModule
