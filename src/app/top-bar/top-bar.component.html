@@ -5,12 +5,14 @@
     <span>
     <img (click)="deleteNewDocumentDialog()" class="delete-icon" src="../assets/icons/delete_icon.png" md-raised-button/>
     </span>
+        <span (click)="fileInput.click()">
+            <img class="add-file-icon" src="../assets/icons/add_icon.png" md-raised-button/>
+            <input #fileInput type="file" (change)="upload($event)" style="display:none;" />
+        </span>
 
-    <progress max="100" animate="true" [value]="(uploadProgress | async)"></progress>
-    
-    <span (click)="fileInput.click()">
-        <img class="add-file-icon" src="../assets/icons/add_icon.png" md-raised-button/>
-        <input #fileInput type="file" (change)="upload($event)" style="display:none;" />
-    </span>
+        <span>
+        <progress class="progress-bar" max="100" animate="true" *ngIf = "isVisible" [value]="(uploadProgress | async)"></progress>
+        </span>
+
 </div>
 

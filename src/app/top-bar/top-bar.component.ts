@@ -15,9 +15,11 @@ export class TopBarComponent implements OnInit {
 
   ref;
   task;
+  isVisible = false;
   uploadProgress;
   downloadURL;
- 
+  dataServiceProcessed;
+   
   constructor(public dialog: MatDialog , private afStorage: AngularFireStorage) { }
 
  
@@ -76,12 +78,14 @@ export class TopBarComponent implements OnInit {
   upload(event) {
 
     console.log( ' file upload ');
-    
+
     const randomId = Math.random().toString(36).substring(2);
     this.ref = this.afStorage.ref(randomId);
     this.task = this.ref.put(event.target.files[0]);
     this.uploadProgress = this.task.percentageChanges();
-    console.log(this.uploadProgress);           
+    this.isVisible = true;
+    console.log(this.uploadProgress);
+    
   }
 
 }
