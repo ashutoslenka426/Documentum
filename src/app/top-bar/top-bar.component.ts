@@ -5,6 +5,11 @@ import { DeleteDocumentComponent } from '../delete-document/delete-document.comp
 import { DocumentlistComponent } from '../documentlist/documentlist.component';
 import { AngularFireStorage , AngularFireUploadTask  } from 'angularfire2/storage';
 
+import {Observable} from 'rxjs';
+
+import { of } from 'rxjs';
+import { catchError, finalize } from 'rxjs/operators';
+
 @Component({
   selector: 'app-top-bar',
   templateUrl: './top-bar.component.html',
@@ -19,6 +24,7 @@ export class TopBarComponent implements OnInit {
   uploadProgress;
   downloadURL;
   dataServiceProcessed;
+  uploadPercent = 0;
    
   constructor(public dialog: MatDialog , private afStorage: AngularFireStorage) { }
 
@@ -84,8 +90,17 @@ export class TopBarComponent implements OnInit {
     this.task = this.ref.put(event.target.files[0]);
     this.uploadProgress = this.task.percentageChanges();
     this.isVisible = true;
-    console.log(this.uploadProgress);
-    
+
+    this.task.snapshotChanges().pipe(
+      finalize(() => {
+        this.ref.getDownloadURL().subscribe((url) => {
+          this.isVisible = false;
+
+        })
+      }),
+    ).subscribe()
+   
+       
   }
 
 }

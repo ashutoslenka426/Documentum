@@ -68,6 +68,15 @@ export class DocumentlistComponent implements OnInit {
       this.name = result;
     });
 
+    
+
  }
+
+ selectedRowIndex: number = -1;
+
+    highlight(row){
+        this.selectedRowIndex = row.id;
+        console.log(row.id);
+    }
 
 }
