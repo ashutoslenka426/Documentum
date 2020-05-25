@@ -28,6 +28,10 @@ td.mat-cell:last-of-type, td.mat-footer-cell:last-of-type, th.mat-header-cell:la
     padding-left: 150px;
     padding-right: 0px;
 }
-.highlight{
-    background: #42A948; /* green */
-}
+.table-row:focus {
+    background: tomato;
+    outline: none;
+  }
+.table-row:focus mat-cell {
+    color: white; 
+  }
